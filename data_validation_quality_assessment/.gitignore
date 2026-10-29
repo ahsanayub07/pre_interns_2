@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+# generated reports stay local (they contain article text)
+validation_output/*
+!validation_output/.gitkeep
