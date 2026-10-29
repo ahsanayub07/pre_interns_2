@@ -31,6 +31,7 @@ data_validation_quality_assessment/
 ├── validation_rules.py    the rules (pure functions, no database)
 ├── report_generator.py    CSV and JSON report writers
 ├── validate.py            command-line program
+├── Validation_Quality_Assessment_Results.ipynb   results notebook (rules, exercises A-E, reports)
 ├── requirements.txt
 ├── tests/
 │   └── test_validation_rules.py
@@ -61,6 +62,10 @@ python validate.py --export-ml-ready   # writes the ML-ready dataset
 ```
 
 `--limit N` validates only the first N articles (by id), for quick tests. `--output-dir` changes where reports are written.
+
+### Results notebook
+
+`Validation_Quality_Assessment_Results.ipynb` explains every rule, demonstrates the rules and edge cases on sample records, reads the reports in `validation_output/`, and answers Exercises A to E (placeholder titles, per-domain monitoring, duplicate policy with an audit log, edge-case tests, acceptance criteria for two tasks). It never connects to the database. Run `python validate.py --run` first, then start Jupyter from this folder (`python -m pip install pandas notebook`).
 
 ## 6. Validation Rules
 
