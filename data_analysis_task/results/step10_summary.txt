@@ -1,0 +1,16 @@
+STEP 10 - ALL ARTICLES CLASSIFIED (rules-1.3)
+Articles: 95,094
+
+Category distribution:
+  other           36,103   38.0%
+  technology      19,142   20.1%
+  politics        15,342   16.1%
+  uncertain       10,716   11.3%
+  market_stocks    7,072    7.4%
+  health           5,495    5.8%
+  energy           1,224    1.3%
+
+Page types: news_article 93,705, company_profile 1,234, deals_page 155
+Sub-labels: blockchain_technology 1,131, crypto_markets 204
+Flagged needs_review: 22,031 (23.2%)
+Confidence: median 0.79, share >= 0.6: 82.5%

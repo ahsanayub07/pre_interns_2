@@ -1,0 +1,8 @@
+﻿category,articles,median_conf,p25,p75,share_conf_ge_0.6_pct,needs_review_pct
+market_stocks,7072,0.84,0.73,0.94,92.8,26.0
+technology,19142,0.91,0.81,0.97,97.1,13.3
+health,5495,0.92,0.8,0.99,96.5,11.0
+energy,1224,0.8,0.73,0.87,91.9,40.8
+politics,15342,0.91,0.79,0.97,96.4,11.7
+other,36103,0.73,0.6,0.82,85.5,14.5
+uncertain,10716,0.35,0.35,0.35,11.5,88.5

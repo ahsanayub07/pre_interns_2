@@ -1,0 +1,72 @@
+STEP 11 - WHAT THE LABELS SHOW, AND ML READINESS
+Articles: 95,094 (rules-1.3)
+
+1. CATEGORY DISTRIBUTION
+   market_stocks    7,072  7.4%
+   technology      19,142  20.1%
+   health           5,495  5.8%
+   energy           1,224  1.3%
+   politics        15,342  16.1%
+   other           36,103  38.0%
+   uncertain       10,716  11.3%
+
+2. DOMAINS (domains with at least 100 articles)
+   102 domains cover 99.1% of all articles.
+   Biggest 15: domain, articles, its most common category and that category's share
+   wired.com                     2,674   technology     41.2%
+   newyorker.com                 1,795   other          61.3%
+   theverge.com                  1,308   technology     63.4%
+   dailymail.com                 1,286   other          62.0%
+   thenextweb.com                1,270   technology     50.9%
+   cbsnews.com                   1,267   other          63.6%
+   foxnews.com                   1,267   other          51.9%
+   latimes.com                   1,266   other          53.3%
+   gulfnews.com                  1,264   other          45.8%
+   vox.com                       1,260   politics       44.0%
+   mirror.co.uk                  1,257   other          64.0%
+   metro.co.uk                   1,256   other          73.6%
+   techradar.com                 1,251   technology     60.0%
+   mashable.com                  1,248   technology     43.7%
+   scmp.com                      1,248   other          38.5%
+   25 of 102 domains have 60%+ of their articles in ONE topic (not other/uncertain).
+
+3. TIME
+   Articles per year (2020 onward): 2020 662, 2021 2,468, 2022 1,412, 2023 928, 2024 3,020, 2025 8,041, 2026 65,322
+   Months since 2024 with at least 300 articles: 23 of 34.
+   market_stocks  share first month 4.9%  ->  last month 9.9%  (range 1.6% to 44.9%)
+   technology     share first month 11.0%  ->  last month 13.4%  (range 8.8% to 40.4%)
+   health         share first month 5.7%  ->  last month 4.5%  (range 3.0% to 35.8%)
+   energy         share first month 1.9%  ->  last month 1.5%  (range 0.3% to 1.9%)
+   politics       share first month 11.9%  ->  last month 20.8%  (range 1.5% to 20.8%)
+   Careful: the mix over time also reflects WHICH sites were scraped in which months, not only the news.
+
+4. CONFIDENCE
+   category        articles  median  >=0.6   needs_review
+   market_stocks     7,072   0.84    92.8%    26.0%
+   technology       19,142   0.91    97.1%    13.3%
+   health            5,495   0.92    96.5%    11.0%
+   energy            1,224   0.80    91.9%    40.8%
+   politics         15,342   0.91    96.4%    11.7%
+   other            36,103   0.73    85.5%    14.5%
+   uncertain        10,716   0.35    11.5%    88.5%
+   Why 'uncertain':
+        4,040  ambiguous between two topics
+        3,696  weak evidence (one topic, too little)
+        1,746  not analysed (not English)
+        1,234  company profile page: template text, not a news article
+
+5. ML READINESS
+   Safe to train on (real label, news page, confidence >= 0.6, not flagged): 71,674 of 95,094 (75.4%)
+   Per category: market_stocks 5,230, technology 16,587, health 4,888, energy 724, politics 13,549, other 30,696
+   Class balance: largest class is 42x the smallest. Use class weights or sampling.
+   Duplicate titles: 589 articles share a title with another article (234 groups); 27 groups got different labels.
+   After keeping one article per title: 71,319 training candidates (saved in ml_training_candidates.csv).
+   Shortcut check: a model that only knows the DOMAIN gets 67.6% right (always guessing 'other' gets 42.7%).
+   A text model is only impressive if it clearly beats the domain-only number.
+   Split train/test by domain or by time, so the model cannot just recognise a site.
+
+6. HONEST WARNINGS FOR THE ML STAGE
+   a) The labels come from keyword rules. A model trained on them mostly relearns those rules.
+   b) Judge any model on the hand-labelled articles (300 in total), never on rule labels.
+   c) Rule accuracy was 68.5% (v1.2, 200 articles) and 73.0% (v1.3, 100 articles); expect label noise.
+   d) Use only the 'safe to train on' rows, or give the flagged ones lower weight.
